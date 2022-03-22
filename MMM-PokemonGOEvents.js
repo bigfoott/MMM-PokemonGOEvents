@@ -5,6 +5,7 @@ Module.register("MMM-PokemonGOEvents", {
         dataUpdateInterval: 600000, //10 minutes
         maxEvents: 5,
         truncateTitle: 0,
+        exactTimestamp: false,
         eventWhitelist: [],
         eventBlacklist: [],
         specificEventBlacklist: []
@@ -72,12 +73,29 @@ Module.register("MMM-PokemonGOEvents", {
 
                 var relativeDate = '';
                 if (this.config.category == "current")
-                {
-                    relativeDate = "Ends " + moment(e.end).fromNow();
+                {                    
+                    if (this.config.exactTimestamp)
+                    {
+                        var time = moment.duration(Date.now() - e.end);
+                        relativeDate = "Ends in " + this.formatExactTime(time);
+                    }
+                    else
+                    {
+                        relativeDate = "Ends " + moment(e.end).fromNow();
+                    }
+
                 }
                 else
                 {
-                    relativeDate = "Starts " + moment(e.start).fromNow();
+                    if (this.config.exactTimestamp)
+                    {
+                        var time = moment.duration(e.start - Date.now());
+                        relativeDate = "Starts in " + this.formatExactTime(time);
+                    }
+                    else
+                    {
+                        relativeDate = "Starts " + moment(e.start).fromNow();
+                    }
                 }
 
                 if (this.config.truncateTitle > 0 && e.name.length > this.config.truncateTitle)
@@ -107,6 +125,24 @@ Module.register("MMM-PokemonGOEvents", {
         }
         
         return wrapper;
+    },
+
+    formatExactTime: function(time) {
+        var timeSec = Math.floor(time / 1000);
+
+        var days = Math.floor(timeSec / (3600*24));
+        var hours = Math.floor(timeSec % (3600*24) / 3600);
+        var minutes = Math.floor(timeSec % 3600 / 60);
+
+        var formatted = ""
+        if (days > 0)
+            formatted = `${days} day${days == 1 ? "" : "s"}, ${hours} hour${hours == 1 ? "" : "s"}.`;
+        else if (hours > 0)
+                formatted = `${hours} hour${hours == 1 ? "" : "s"}, ${minutes} minute${minutes == 1 ? "" : "s"}.`;
+        else
+            formatted = `${minutes} minute${minutes == 1 ? "" : "s"}.`;
+
+        return formatted;
     },
     
     socketNotificationReceived: function(notification, payload) { 

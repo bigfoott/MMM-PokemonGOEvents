@@ -5,7 +5,7 @@
   "main": "MMM-PokemonGOEvents.js",
   "author": "bigfoott",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "jsdom": "latest",
     "moment": "latest"
   }

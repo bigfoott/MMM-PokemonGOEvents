@@ -26,6 +26,7 @@ modules: [
             dataUpdateInterval: 600000, //10 minutes
             maxEvents: 5,
             truncateTitle: 0,
+            exactTimestamp: false,
             eventWhitelist: [],
             eventBlacklist: [],
             specificEventBlacklist: []
@@ -42,7 +43,8 @@ modules: [
 | **`updateInterval`**             | `int` (ms) | `5000`      | The interval at which the DOM is updated.<br/>**NOTE**: This does not re-download event data.
 | **`dataUpdateInterval`**         | `int` (ms) | `600000`    | The interval at which event data is updated.<br/>**NOTE**: Event data (on Leek Duck) is updated very rarely, so this does not need to update very often.
 | **`maxEvents`**                  | `int`      | `5`         | The maximum number of events to show in the module.
-| **`truncateTitle`**              | `int`      | `0`         | Truncate the title of events if they're too long. [0 = no truncation]
+| **`truncateTitle`**              | `int`      | `0`         | Truncate the title of events if they're too long.<br/>[0 = no truncation]
+| **`exactTimestamp`**             | `bool`     | `false`     | Display a more precise timestamp for the event start/end dates.
 | **`eventWhitelist`**             | `string[]` | `[]`        | Whitelist certain event types. Only types listed in this array will be shown.
 | **`eventBlacklist`**             | `string[]` | `[]`        | Blacklist certain event types. All types not listed in this array will be shown.<br/>**NOTE**: This option is ignored if the a whitelist is set.
 | **`specificEventBlacklist`**     | `string[]` | `[]`        | Blacklist specific events. Events are specified by the ID on the Leek Duck website.<br/>**EX:** To blacklist the Season of Alola event, add `"season-of-alola"` from the event's url `"https://www.leekduck.com/events/season-of-alola/"`.
@@ -65,6 +67,7 @@ modules: [
             dataUpdateInterval: 600000, //10 minutes
             maxEvents: 5,
             truncateTitle: 0,
+            exactTimestamp: false,
             eventWhitelist: [],
             eventBlacklist: [],
             specificEventBlacklist: []
