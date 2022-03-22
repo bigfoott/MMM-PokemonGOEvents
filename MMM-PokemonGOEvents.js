@@ -1,4 +1,4 @@
-Module.register("MMM-PokemonGoEvents", {
+Module.register("MMM-PokemonGOEvents", {
     defaults: {
         category: "current",
         updateInterval: 600000, //10 minutes
@@ -9,7 +9,7 @@ Module.register("MMM-PokemonGoEvents", {
         specificEventBlacklist: []
     },
     getStyles: function() {
-        return ["MMM-PokemonGoEvents.css"];
+        return ["MMM-PokemonGOEvents.css"];
     },
 
     start: function () {

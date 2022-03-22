@@ -1,8 +1,8 @@
 {
-  "name": "MMM-PokemonGoEvents",
+  "name": "MMM-PokemonGOEvents",
   "version": "1.0.0",
   "description": "Display Pokemon GO Events on a MagicMirror.",
-  "main": "MMM-PokemonGoEvents.js",
+  "main": "MMM-PokemonGOEvents.js",
   "author": "bigfoott",
   "license": "MIT",
   "devDependencies": {
