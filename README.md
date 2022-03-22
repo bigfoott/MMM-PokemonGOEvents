@@ -1,6 +1,8 @@
 # MMM-PokemonGOEvents
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) that displays Pokemon GO events. All event data is scraped from [Leek Duck](https://www.leekduck.com/events/).
+This is a module for [MagicMirror](https://magicmirror.builders/) that displays Pokemon GO events.
+
+All event data is scraped from the [/events](https://www.leekduck.com/events/) page on [LeekDuck.com](https://www.leekduck.com/).
 
 ![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
 
@@ -22,8 +24,8 @@ modules: [
         header: "Pokemon GO Events",
         config: {
             category: "current",
-            updateInterval: 5000, //5 seconds
-            dataUpdateInterval: 600000, //10 minutes
+            updateInterval: 5000,
+            dataUpdateInterval: 600000,
             maxEvents: 5,
             truncateTitle: 0,
             exactTimestamp: false,
@@ -63,8 +65,8 @@ modules: [
         header: "Pokemon GO Events",
         config: {
             category: "current",
-            updateInterval: 5000, //5 seconds
-            dataUpdateInterval: 600000, //10 minutes
+            updateInterval: 5000,
+            dataUpdateInterval: 600000,
             maxEvents: 5,
             truncateTitle: 0,
             exactTimestamp: false,
