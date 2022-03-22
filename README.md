@@ -2,7 +2,7 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) that displays Pokemon GO events. All event data is scraped from [Leek Duck](https://www.leekduck.com/events/).
 
-![Demo](https://raw.githubusercontent.com/bigfoott/MMM-PokemonGOEvents/master/docs/preview.png)
+![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
 
 ## Using the Module
 
