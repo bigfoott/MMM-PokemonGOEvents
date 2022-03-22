@@ -6,7 +6,7 @@ This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror
 
 ## Using the Module
 
-To install this module, clone this repository into `~/MagicMirror/modules` and install the necessary dependencies:
+To install this module, clone this repository into the `MagicMirror/modules` folder and install the necessary dependencies:
 ```
 git clone https://github.com/bigfoott/MMM-PokemonGOEvents.git
 cd MMM-PokemonGOEvents
