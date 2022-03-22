@@ -32,6 +32,12 @@ Module.register("MMM-PokemonGoEvents", {
         },
         interval);
 
+        var domTimer = setInterval(() => 
+        {
+            this.updateDom();
+        },
+        5000);
+
         this.sendSocketNotification("PGO_GET_DATA", payload);
     },
 
