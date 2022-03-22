@@ -19,11 +19,18 @@ Module.register("MMM-PokemonGoEvents", {
 
         var payload = { category: this.config.category, index: this.data.index }
 
+        var interval = this.config.updateInterval
+
+        if (interval < 120000)
+            interval = 120000;
+            // don't update more than once every 2 minutes.
+            // don't be mean to the leekduck site please :)
+
         var timer = setInterval(() => 
         {
             this.sendSocketNotification("PGO_GET_DATA", payload);
         },
-        this.config.updateInterval);
+        interval);
 
         this.sendSocketNotification("PGO_GET_DATA", payload);
     },
