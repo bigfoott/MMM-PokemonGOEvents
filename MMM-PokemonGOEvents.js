@@ -73,10 +73,17 @@ Module.register("MMM-PokemonGOEvents", {
 
                 var relativeDate = '';
                 if (this.config.category == "current")
-                {                    
+                {     
+                    if (e.end - Date.now() < 0)
+                    {
+                        var payload = { category: this.config.category, index: this.data.index }
+                        this.sendSocketNotification("PGO_GET_DATA", payload);
+                        break;
+                    }
+                    
                     if (this.config.exactTimestamp)
                     {
-                        var time = moment.duration(Date.now() - e.end);
+                        var time = moment.duration(e.end - Date.now());
                         relativeDate = "Ends in " + this.formatExactTime(time);
                     }
                     else
@@ -87,6 +94,13 @@ Module.register("MMM-PokemonGOEvents", {
                 }
                 else
                 {
+                    if (e.start - Date.now() < 0)
+                    {
+                        var payload = { category: this.config.category, index: this.data.index }
+                        this.sendSocketNotification("PGO_GET_DATA", payload);
+                        break;
+                    }
+
                     if (this.config.exactTimestamp)
                     {
                         var time = moment.duration(e.start - Date.now());
@@ -139,8 +153,10 @@ Module.register("MMM-PokemonGOEvents", {
             formatted = `${days} day${days == 1 ? "" : "s"}, ${hours} hour${hours == 1 ? "" : "s"}.`;
         else if (hours > 0)
                 formatted = `${hours} hour${hours == 1 ? "" : "s"}, ${minutes} minute${minutes == 1 ? "" : "s"}.`;
-        else
+        else if (minutes > 0)
             formatted = `${minutes} minute${minutes == 1 ? "" : "s"}.`;
+        else
+            formatted = "less than a minute."
 
         return formatted;
     },
