@@ -3,8 +3,10 @@ Module.register("MMM-PokemonGoEvents", {
         category: "current",
         updateInterval: 600000, //10 minutes
         maxEvents: 5,
-        truncateTitle: 35
-        //TODO: whitelist/blacklist events
+        truncateTitle: 30,
+        eventBlacklist: [],
+        eventWhitelist: [],
+        specificEventBlacklist: []
     },
     getStyles: function() {
         return ["MMM-PokemonGoEvents.css"];
@@ -15,12 +17,15 @@ Module.register("MMM-PokemonGoEvents", {
 
         this.config.category = this.config.category.toLowerCase()
 
+        var payload = { category: this.config.category, index: this.data.index }
+
         var timer = setInterval(() => 
         {
-            this.sendSocketNotification("GET_DATA", this.config.category);
+            this.sendSocketNotification("PGO_GET_DATA", payload);
         },
-        this.config.updateInterval)
-        this.sendSocketNotification("GET_DATA", this.config.category);
+        this.config.updateInterval);
+
+        this.sendSocketNotification("PGO_GET_DATA", payload);
     },
 
     getDom: function() {
@@ -29,9 +34,27 @@ Module.register("MMM-PokemonGoEvents", {
         if (this.eventData != null)
         {
             var html = '';
-            for (var i = 0; i < this.config.maxEvents && i < this.eventData.length; i++)
+            var added = 0;
+            for (var i = 0; i < this.eventData.length && added < this.config.maxEvents; i++)
             {
                 var e = this.eventData[i];
+
+                if (this.config.eventWhitelist.length > 0)
+                {
+                    if (!this.config.eventWhitelist.includes(e.eventType))
+                        continue;
+                }
+                else if (this.config.eventBlacklist.length > 0)
+                {
+                    if (this.config.eventBlacklist.includes(e.eventType))
+                        continue;
+                }
+
+                if (this.config.specificEventBlacklist.length > 0)
+                {
+                    if (this.config.specificEventBlacklist.includes(e.eventID))
+                        continue;
+                }
 
                 var relativeDate = '';
                 if (this.config.category == "current")
@@ -58,7 +81,14 @@ Module.register("MMM-PokemonGoEvents", {
                                 <p class="date">${relativeDate}</p>
                             </div>
                         </div>`;
+                added++;
             }
+
+            if (html == "")
+            {
+                html = '<span style="color: var(--color-text-bright);">No events.</span>'
+            }
+
             wrapper.innerHTML = html;
         }
         
@@ -66,8 +96,9 @@ Module.register("MMM-PokemonGoEvents", {
     },
     
     socketNotificationReceived: function(notification, payload) { 
-        if (notification === "DATA_RESULT") {
-            this.eventData = payload;
+        if (notification === "PGO_DATA_RESULT" && payload.index == this.data.index)
+        {
+            this.eventData = payload.array;
             this.updateDom();
         }
     }

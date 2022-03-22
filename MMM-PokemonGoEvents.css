@@ -12,6 +12,7 @@
     position: relative;
     color: var(--color-text-bright);
     padding-left: 2px;
+    padding-right: 55px;
 }
 .event-container > .inner {
     background-color: black;
@@ -33,28 +34,28 @@
     border-radius: 6px;
 }
 
-.event-container.community-day{background-color:#1660a9}
-.event-container.raid-day{background-color:#e74c3c}
-.event-container.raid-battles{background-color:#c0392b}
-.event-container.event{background-color:#27ae60}
-.event-container.raid-hour{background-color:#c0392b}
-.event-container.research{background-color:#1abc9c}
-.event-container.timed-research{background-color:#1abc9c}
-.event-container.limited-research{background-color:#159e83}
-.event-container.live-event{background-color:#d63031}
-.event-container.pokémon-go-fest{background-color:#153d94}
-.event-container.research-breakthrough{background-color:#795548}
-.event-container.special-research{background-color:#13a185}
-.event-container.global-challenge{background-color:#0a64b5}
-.event-container.go-rocket-takeover{background-color:#1e1e1e}
-.event-container.team-go-rocket{background-color:#1e1e1e}
-.event-container.giovanni-special-research{background-color:#1e272e}
-.event-container.safari-zone{background-color:#3d7141}
-.event-container.ticketed-event{background-color:#de3e9b}
-.event-container.go-battle-league{background-color:#8e44ad}
-.event-container.pokémon-spotlight-hour{background-color:#e58e26}
-.event-container.bonus-hour{background-color:#40407a}
-.event-container.update{background-color:#2980b9}
-.event-container.raid-weekend{background-color:#6f1e51}
-.event-container.potential-ultra-unlock{background-color:#2c3e50}
-.event-container.location-specific{background-color:#284b92}
+.event-container.community-day { background-color: #1660a9 }
+.event-container.raid-day { background-color: #e74c3c }
+.event-container.raid-battles { background-color: #c0392b }
+.event-container.event { background-color: #27ae60 }
+.event-container.raid-hour { background-color: #c0392b }
+.event-container.research { background-color: #1abc9c }
+.event-container.timed-research { background-color: #1abc9c }
+.event-container.limited-research { background-color: #159e83 }
+.event-container.live-event { background-color: #d63031 }
+.event-container.pokémon-go-fest { background-color: #153d94 }
+.event-container.research-breakthrough { background-color: #795548 }
+.event-container.special-research { background-color: #13a185 }
+.event-container.global-challenge { background-color: #0a64b5 }
+.event-container.go-rocket-takeover { background-color: #1e1e1e }
+.event-container.team-go-rocket { background-color: #1e1e1e }
+.event-container.giovanni-special-research { background-color: #1e272e }
+.event-container.safari-zone { background-color: #3d7141 }
+.event-container.ticketed-event { background-color: #de3e9b }
+.event-container.go-battle-league { background-color: #8e44ad }
+.event-container.pokémon-spotlight-hour { background-color: #e58e26 }
+.event-container.bonus-hour { background-color: #40407a }
+.event-container.update { background-color: #2980b9 }
+.event-container.raid-weekend { background-color: #6f1e51 }
+.event-container.potential-ultra-unlock { background-color: #2c3e50 }
+.event-container.location-specific { background-color: #284b92 }
