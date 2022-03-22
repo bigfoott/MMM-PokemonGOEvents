@@ -1,11 +1,12 @@
 Module.register("MMM-PokemonGOEvents", {
     defaults: {
         category: "current",
-        updateInterval: 600000, //10 minutes
+        updateInterval: 5000, //5 seconds
+        dataUpdateInterval: 600000, //10 minutes
         maxEvents: 5,
-        truncateTitle: 30,
-        eventBlacklist: [],
+        truncateTitle: 0,
         eventWhitelist: [],
+        eventBlacklist: [],
         specificEventBlacklist: []
     },
     getStyles: function() {
@@ -19,10 +20,10 @@ Module.register("MMM-PokemonGOEvents", {
 
         var payload = { category: this.config.category, index: this.data.index }
 
-        var interval = this.config.updateInterval
+        var dataInterval = this.config.dataUpdateInterval
 
-        if (interval < 120000)
-            interval = 120000;
+        if (dataInterval < 120000)
+        dataInterval = 120000;
             // don't update more than once every 2 minutes.
             // don't be mean to the leekduck site please :)
 
@@ -30,13 +31,13 @@ Module.register("MMM-PokemonGOEvents", {
         {
             this.sendSocketNotification("PGO_GET_DATA", payload);
         },
-        interval);
+        dataInterval);
 
         var domTimer = setInterval(() => 
         {
             this.updateDom();
         },
-        5000);
+        this.config.updateInterval);
 
         this.sendSocketNotification("PGO_GET_DATA", payload);
     },

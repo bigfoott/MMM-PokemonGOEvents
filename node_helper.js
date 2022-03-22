@@ -28,6 +28,7 @@ module.exports = NodeHelper.create({
                     var eventItemWrapper = e.querySelector(":scope > .event-item-wrapper");
                     eventItemWrapper.classList
                     var eventType = (eventItemWrapper.classList + "").replace("event-item-wrapper ", "");
+                    eventType = eventType.replace("é", "e");
 
                     var revealCountdownNode = e.querySelector(":scope > .event-item-wrapper > div:not(.event-item)");
                     var revealCountdown = "";
