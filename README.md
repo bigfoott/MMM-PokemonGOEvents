@@ -6,7 +6,7 @@ All event data is scraped from the [/events](https://www.leekduck.com/events/) p
 
 ![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
 
-## Using the Module
+## Usage
 
 To install this module, clone this repository into the `MagicMirror/modules` folder and install the necessary dependencies:
 ```
