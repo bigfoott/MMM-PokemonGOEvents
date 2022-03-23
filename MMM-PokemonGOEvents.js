@@ -2,7 +2,6 @@ Module.register("MMM-PokemonGOEvents", {
     defaults: {
         category: "current",
         updateInterval: 5000, //5 seconds
-        dataUpdateInterval: 600000, //10 minutes
         maxEvents: 5,
         truncateTitle: 0,
         exactTimestamp: false,
@@ -19,28 +18,13 @@ Module.register("MMM-PokemonGOEvents", {
 
         this.config.category = this.config.category.toLowerCase()
 
-        var payload = { category: this.config.category, index: this.data.index }
-
-        var dataInterval = this.config.dataUpdateInterval
-
-        if (dataInterval < 120000)
-        dataInterval = 120000;
-            // don't update more than once every 2 minutes.
-            // don't be mean to the leekduck site please :)
-
-        var timer = setInterval(() => 
-        {
-            this.sendSocketNotification("PGO_GET_DATA", payload);
-        },
-        dataInterval);
+        this.sendSocketNotification('PGO_INITIALIZE_GET_DATA', null);
 
         var domTimer = setInterval(() => 
         {
             this.updateDom();
         },
         this.config.updateInterval);
-
-        this.sendSocketNotification("PGO_GET_DATA", payload);
     },
 
     getDom: function() {
@@ -76,8 +60,7 @@ Module.register("MMM-PokemonGOEvents", {
                 {     
                     if (e.end - Date.now() < 0)
                     {
-                        var payload = { category: this.config.category, index: this.data.index }
-                        this.sendSocketNotification("PGO_GET_DATA", payload);
+                        this.sendSocketNotification("PGO_GET_DATA", true);
                         break;
                     }
                     
@@ -96,8 +79,7 @@ Module.register("MMM-PokemonGOEvents", {
                 {
                     if (e.start - Date.now() < 0)
                     {
-                        var payload = { category: this.config.category, index: this.data.index }
-                        this.sendSocketNotification("PGO_GET_DATA", payload);
+                        this.sendSocketNotification("PGO_GET_DATA", true);
                         break;
                     }
 
@@ -162,10 +144,12 @@ Module.register("MMM-PokemonGOEvents", {
     },
     
     socketNotificationReceived: function(notification, payload) { 
-        if (notification === "PGO_DATA_RESULT" && payload.index == this.data.index)
+        if (notification === "PGO_DATA_RESULT" && payload.category == this.config.category.toLowerCase())
         {
+            console.log("[" + this.name + "] Received data result notification (\"" + payload.category + "\").")
+
             this.eventData = payload.array;
             this.updateDom();
         }
     }
-  })
+})
