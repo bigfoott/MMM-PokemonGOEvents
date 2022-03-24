@@ -1,29 +1,14 @@
 ## Event Types
 
-| Event Types                   | 
-|------------------------------ |
-| `"community-day"`             | 
-| `"raid-day"`                  | 
-| `"raid-battles"`              | 
-| `"event"`                     | 
-| `"raid-hour"`                 | 
-| `"research"`                  | 
-| `"timed-research"`            | 
-| `"limited-research"`          | 
-| `"live-event"`                | 
-| `"pokemon-go-fest"`           | 
-| `"research-breakthrough"`     | 
-| `"special-research"`          | 
-| `"global-challenge"`          | 
-| `"go-rocket-takeover"`        | 
-| `"team-go-rocket"`            | 
-| `"giovanni-special-research"` | 
-| `"safari-zone"`               | 
-| `"ticketed-event"`            | 
-| `"go-battle-league"`          | 
-| `"pokemon-spotlight-hour"`    | 
-| `"bonus-hour"`                | 
-| `"update"`                    | 
-| `"raid-weekend"`              | 
-| `"potential-ultra-unlock"`    | 
-| `"location-specific"`         | 
+| Events                     | Research                  | Raids            | GO Rocket                     | Misc.
+|--------------------------- |-------------------------- |----------------- |------------------------------ |------------
+| `"community-day"`          | `"research"`              | `"raid-day"`     | `"go-rocket-takeover"`        | `"potential-ultra-unlock"`
+| `"event"`                  | `"timed-research"`        | `"raid-battles"` | `"team-go-rocket"`            | `"update"`
+| `"live-event"`             | `"limited-research"`      | `"raid-hour"`    | `"giovanni-special-research"` | `"go-battle-league"`
+| `"pokemon-go-fest"`        | `"research-breakthrough"` | `"raid-weekend"`
+| `"global-challenge"`       | `"special-research"`
+| `"safari-zone"`
+| `"ticketed-event"`
+| `"location-specific"`
+| `"bonus-hour"`
+| `"pokemon-spotlight-hour"`
