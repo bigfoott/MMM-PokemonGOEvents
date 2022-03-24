@@ -1,10 +1,10 @@
+![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
+
 # MMM-PokemonGOEvents
 
-This is a module for [MagicMirror](https://magicmirror.builders/) that displays Pokemon GO events.
+MMM-PokemonGOEvents is a module for [MagicMirror](https://magicmirror.builders/) that displays Pokemon GO events.
 
 All event data is scraped from the [/events](https://www.leekduck.com/events/) page on [LeekDuck.com](https://www.leekduck.com/).
-
-![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
 
 ## Usage
 
@@ -22,21 +22,12 @@ modules: [
         module: 'MMM-PokemonGOEvents',
         position: 'bottom_right',
         header: "Pokemon GO Events",
-        config: {
-            category: "current",
-            theme: "default",
-            updateInterval: 5000,
-            maxEvents: 5,
-            truncateTitle: 0,
-            exactTimestamp: false,
-            eventWhitelist: [],
-            eventBlacklist: [],
-            specificEventBlacklist: [],
-            eventIcon: "fa-solid fa-ticket"
-        }
+        config: {}
     }
 ]
 ```
+
+See the below section for various configuration options.
 
 ## Configuration
 
@@ -60,23 +51,21 @@ View the list of event types [here](https://github.com/bigfoott/MMM-PokemonGOEve
 ## Default Configuration
 
 ```js
-modules: [
-    {
-        module: 'MMM-PokemonGOEvents',
-        position: 'bottom_right',
-        header: "Pokemon GO Events",
-        config: {
-            category: "current",
-            theme: "default",
-            updateInterval: 5000,
-            maxEvents: 5,
-            truncateTitle: 0,
-            exactTimestamp: false,
-            eventWhitelist: [],
-            eventBlacklist: [],
-            specificEventBlacklist: [],
-            eventIcon: "fa-solid fa-ticket"
-        }
+{
+    module: 'MMM-PokemonGOEvents',
+    position: 'bottom_right',
+    header: "Pokemon GO Events",
+    config: {
+        category: "current",
+        theme: "default",
+        updateInterval: 5000,
+        maxEvents: 5,
+        truncateTitle: 0,
+        exactTimestamp: false,
+        eventWhitelist: [],
+        eventBlacklist: [],
+        specificEventBlacklist: [],
+        eventIcon: "fa-solid fa-ticket"
     }
-]
+}
 ```
