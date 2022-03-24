@@ -1,13 +1,15 @@
 Module.register("MMM-PokemonGOEvents", {
     defaults: {
         category: "current",
+        theme: "default",
         updateInterval: 5000, //5 seconds
         maxEvents: 5,
         truncateTitle: 0,
         exactTimestamp: false,
         eventWhitelist: [],
         eventBlacklist: [],
-        specificEventBlacklist: []
+        specificEventBlacklist: [],
+        minimalIcon: "fa-solid fa-circle"
     },
     getStyles: function() {
         return ["MMM-PokemonGOEvents.css"];
@@ -99,16 +101,28 @@ Module.register("MMM-PokemonGOEvents", {
                     e.name = e.name.substring(0, this.config.truncateTitle) + "…"
                 }
                 
-                html += `<div class="event-container ${e.eventType}">
-                            <div class="heading">
-                                ${e.heading}
-                                <img src="${e.image}">
-                            </div>
-                            <div class="inner">
-                                <p class="title">${e.name}</p>
-                                <p class="date">${relativeDate}</p>
-                            </div>
-                        </div>`;
+                
+                if (this.config.theme.toLowerCase() == "leekduck")
+                {
+                    html += `<div class="event-container leekduck" style="background-color: var(--pgo-${e.eventType})">
+                                <div class="heading">
+                                    ${e.heading}
+                                    <img src="${e.image}">
+                                </div>
+                                <div class="inner">
+                                    <p class="title">${e.name}</p>
+                                    <p class="date">${relativeDate}</p>
+                                </div>
+                            </div>`;
+                }
+                else //default
+                {
+                    html += `<div class="event-container default">
+                                <p class="title"><i class="${this.config.minimalIcon}" style="color: var(--pgo-${e.eventType})"></i> ${e.name}</p>
+                                <p class="date light">${relativeDate}</p>
+                            </div>`;
+                }
+
                 added++;
             }
 

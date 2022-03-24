@@ -24,13 +24,15 @@ modules: [
         header: "Pokemon GO Events",
         config: {
             category: "current",
+            theme: "default",
             updateInterval: 5000,
             maxEvents: 5,
             truncateTitle: 0,
             exactTimestamp: false,
             eventWhitelist: [],
             eventBlacklist: [],
-            specificEventBlacklist: []
+            specificEventBlacklist: [],
+            eventIcon: "fa-solid fa-circle"
         }
     }
 ]
@@ -38,16 +40,18 @@ modules: [
 
 ## Configuration
 
-| Option                           | Type       | Default     | Description
-|--------------------------------- |----------- |------------ |----------- 
-| **`category`**                   | `string`   | `"current"` | The category of events to display. Can be either `"current"` or `"upcoming"`.
-| **`updateInterval`**             | `int` (ms) | `5000`      | The interval at which the DOM is updated.<br/>**NOTE**: This does not re-download event data.
-| **`maxEvents`**                  | `int`      | `5`         | The maximum number of events to show in the module.
-| **`truncateTitle`**              | `int`      | `0`         | Truncate the title of events if they're too long.<br/>[0 = no truncation]
-| **`exactTimestamp`**             | `bool`     | `false`     | Display a more precise timestamp for the event start/end dates.
-| **`eventWhitelist`**             | `string[]` | `[]`        | Whitelist certain event types. Only types listed in this array will be shown.
-| **`eventBlacklist`**             | `string[]` | `[]`        | Blacklist certain event types. All types not listed in this array will be shown.<br/>**NOTE**: This option is ignored if the a whitelist is set.
-| **`specificEventBlacklist`**     | `string[]` | `[]`        | Blacklist specific events. Events are specified by the ID on the Leek Duck website.<br/>**EX:** To blacklist the Season of Alola event, add `"season-of-alola"` from the event's url `"https://www.leekduck.com/events/season-of-alola/"`.
+| Option                           | Type       | Default              | Description
+|--------------------------------- |----------- |--------------------- |----------- 
+| **`category`**                   | `string`   | `"current"`          | The category of events to display. Can be either `"current"` or `"upcoming"`.
+| **`theme`**                      | `string`   | `"default"`          | Choose a visual theme for the module. Can be either `"default"` or `"leekduck"`.
+| **`updateInterval`**             | `int` (ms) | `5000`               | The interval at which the DOM is updated.<br/>**NOTE**: This does not re-download event data.
+| **`maxEvents`**                  | `int`      | `5`                  | The maximum number of events to show in the module.
+| **`truncateTitle`**              | `int`      | `0`                  | Truncate the title of events if they're too long.<br/>[0 = no truncation]
+| **`exactTimestamp`**             | `bool`     | `false`              | Display a more precise timestamp for the event start/end dates.
+| **`eventWhitelist`**             | `string[]` | `[]`                 | Whitelist certain event types. Only types listed in this array will be shown.
+| **`eventBlacklist`**             | `string[]` | `[]`                 | Blacklist certain event types. All types not listed in this array will be shown.<br/>**NOTE**: This option is ignored if the a whitelist is set.
+| **`specificEventBlacklist`**     | `string[]` | `[]`                 | Blacklist specific events. Events are specified by the ID on the Leek Duck website.<br/>**EX:** To blacklist the Season of Alola event, add `"season-of-alola"` from the event's url `"https://www.leekduck.com/events/season-of-alola/"`.
+| **`eventIcon`**                  | `string`   | `fa-solid fa-circle` | The icon to show next to event titles using the `default` theme. Value should be the relevant classes of a [Font Awesome](https://fontawesome.com/) icon.
 
 ## Event Types
 
@@ -63,13 +67,15 @@ modules: [
         header: "Pokemon GO Events",
         config: {
             category: "current",
+            theme: "default",
             updateInterval: 5000,
             maxEvents: 5,
             truncateTitle: 0,
             exactTimestamp: false,
             eventWhitelist: [],
             eventBlacklist: [],
-            specificEventBlacklist: []
+            specificEventBlacklist: [],
+            minimalIcon: "fa-solid fa-circle"
         }
     }
 ]
