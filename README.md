@@ -32,7 +32,7 @@ modules: [
             eventWhitelist: [],
             eventBlacklist: [],
             specificEventBlacklist: [],
-            eventIcon: "fa-solid fa-circle"
+            eventIcon: "fa-solid fa-ticket"
         }
     }
 ]
@@ -75,7 +75,7 @@ modules: [
             eventWhitelist: [],
             eventBlacklist: [],
             specificEventBlacklist: [],
-            minimalIcon: "fa-solid fa-circle"
+            eventIcon: "fa-solid fa-ticket"
         }
     }
 ]

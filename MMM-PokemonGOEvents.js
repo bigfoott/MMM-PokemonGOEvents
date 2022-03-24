@@ -9,7 +9,7 @@ Module.register("MMM-PokemonGOEvents", {
         eventWhitelist: [],
         eventBlacklist: [],
         specificEventBlacklist: [],
-        minimalIcon: "fa-solid fa-circle"
+        eventIcon: "fa-solid fa-ticket"
     },
     getStyles: function() {
         return ["MMM-PokemonGOEvents.css"];
@@ -118,7 +118,7 @@ Module.register("MMM-PokemonGOEvents", {
                 else //default
                 {
                     html += `<div class="event-container default">
-                                <p class="title"><i class="${this.config.minimalIcon}" style="color: var(--pgo-${e.eventType})"></i> ${e.name}</p>
+                                <p class="title"><i class="${this.config.eventIcon}" style="color: var(--pgo-${e.eventType})"></i> ${e.name}</p>
                                 <p class="date light">${relativeDate}</p>
                             </div>`;
                 }
