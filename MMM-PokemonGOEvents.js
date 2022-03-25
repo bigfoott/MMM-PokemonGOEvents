@@ -19,6 +19,7 @@ Module.register("MMM-PokemonGOEvents", {
         Log.info("Starting module: " + this.name);
 
         this.config.category = this.config.category.toLowerCase()
+        this.config.theme = this.config.theme.toLowerCase();
 
         this.sendSocketNotification('PGO_INITIALIZE_GET_DATA', null);
 
@@ -36,6 +37,7 @@ Module.register("MMM-PokemonGOEvents", {
         {
             var html = '';
             var added = 0;
+            var doUpdateData = false;
             for (var i = 0; i < this.eventData.length && added < this.config.maxEvents; i++)
             {
                 var e = this.eventData[i];
@@ -62,8 +64,8 @@ Module.register("MMM-PokemonGOEvents", {
                 {     
                     if (e.end - Date.now() < 0)
                     {
-                        this.sendSocketNotification("PGO_GET_DATA", true);
-                        break;
+                        doUpdateData = true;
+                        continue;
                     }
                     
                     if (this.config.exactTimestamp)
@@ -81,8 +83,8 @@ Module.register("MMM-PokemonGOEvents", {
                 {
                     if (e.start - Date.now() < 0)
                     {
-                        this.sendSocketNotification("PGO_GET_DATA", true);
-                        break;
+                        doUpdateData = true;
+                        continue;
                     }
 
                     if (this.config.exactTimestamp)
@@ -102,7 +104,7 @@ Module.register("MMM-PokemonGOEvents", {
                 }
                 
                 
-                if (this.config.theme.toLowerCase() == "leekduck")
+                if (this.config.theme == "leekduck")
                 {
                     html += `<div class="event-container leekduck" style="background-color: var(--pgo-${e.eventType})">
                                 <div class="heading">
@@ -124,6 +126,11 @@ Module.register("MMM-PokemonGOEvents", {
                 }
 
                 added++;
+            }
+
+            if (doUpdateData)
+            {
+                this.sendSocketNotification("PGO_GET_DATA", true);
             }
 
             if (html == "")

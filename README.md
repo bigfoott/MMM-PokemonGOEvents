@@ -22,12 +22,12 @@ modules: [
         module: 'MMM-PokemonGOEvents',
         position: 'bottom_right',
         header: "Pokemon GO Events",
-        config: {}
+        config: {
+            // See below for configuration options
+        }
     }
 ]
 ```
-
-See the below section for various configuration options.
 
 ## Configuration
 
