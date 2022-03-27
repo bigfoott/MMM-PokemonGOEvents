@@ -1,0 +1,16 @@
+{% if events %}
+    {% if events|length %}
+        {% for event in events %}
+            <div class="event-container default">
+                <p class="title"><i class="{{ config.eventIcon }}" style="color: var(--pgo-{{ event.eventType }})"></i> {{ event.name }}</p>
+                <p class="date light">{{ event.relativeDate }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <span style="color: var(--color-text-bright);">No events.</span>
+    {% endif %}
+{% else %}
+    <div class="dimmed light small">
+        {{ "LOADING" | translate }}
+    </div>
+{% endif %}

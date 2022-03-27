@@ -1,0 +1,23 @@
+{% if events %}
+    {% if events|length %}
+        {% for event in events %}
+            <div class="event-container leekduck" style="background-color: var(--pgo-{{ event.eventType }})">
+                <div class="heading">
+                    {{ event.heading }}
+                    <img src="{{ event.image }}">
+                </div>
+                <div class="inner">
+                    <p class="title">{{ event.name }}</p>
+                    <p class="date">{{ event.relativeDate }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <span style="color: var(--color-text-bright);">No events.</span>
+    {% endif %}
+{% else %}
+    <div class="dimmed light small">
+        {{ "LOADING" | translate }}
+    </div>
+{% endif %}
+

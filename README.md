@@ -6,6 +6,8 @@ MMM-PokemonGOEvents is a module for [MagicMirror](https://magicmirror.builders/)
 
 All event data is scraped from the [/events](https://www.leekduck.com/events/) page on [LeekDuck.com](https://www.leekduck.com/).
 
+[LeekDuck.com](https://www.leekduck.com/) is accessed once every 15 minutes (X:00, X:15, X:30, and X:45), *or* if an event's starting/ending time reaches a negative value.
+
 ## Usage
 
 To install this module, clone this repository into the `MagicMirror/modules` folder and install the necessary dependencies:

@@ -12,7 +12,7 @@ Module.register("MMM-PokemonGOEvents", {
         eventIcon: "fa-solid fa-ticket"
     },
     getStyles: function() {
-        return ["MMM-PokemonGOEvents.css"];
+        return ["MMM-PokemonGOEvents.css", "font-awesome.css"];
     },
 
     start: function () {
@@ -30,14 +30,15 @@ Module.register("MMM-PokemonGOEvents", {
         this.config.updateInterval);
     },
 
-    getDom: function() {
-        var wrapper = document.createElement("div")
+    getEvents: function() {
         
         if (this.eventData != null)
         {
             var html = '';
             var added = 0;
             var doUpdateData = false;
+            var events = [];
+            
             for (var i = 0; i < this.eventData.length && added < this.config.maxEvents; i++)
             {
                 var e = this.eventData[i];
@@ -59,7 +60,6 @@ Module.register("MMM-PokemonGOEvents", {
                         continue;
                 }
 
-                var relativeDate = '';
                 if (this.config.category == "current")
                 {     
                     if (e.end - Date.now() < 0)
@@ -71,11 +71,11 @@ Module.register("MMM-PokemonGOEvents", {
                     if (this.config.exactTimestamp)
                     {
                         var time = moment.duration(e.end - Date.now());
-                        relativeDate = "Ends in " + this.formatExactTime(time);
+                        e.relativeDate = "Ends in " + this.formatExactTime(time);
                     }
                     else
                     {
-                        relativeDate = "Ends " + moment(e.end).fromNow();
+                        e.relativeDate = "Ends " + moment(e.end).fromNow();
                     }
 
                 }
@@ -90,40 +90,20 @@ Module.register("MMM-PokemonGOEvents", {
                     if (this.config.exactTimestamp)
                     {
                         var time = moment.duration(e.start - Date.now());
-                        relativeDate = "Starts in " + this.formatExactTime(time);
+                        e.relativeDate = "Starts in " + this.formatExactTime(time);
                     }
                     else
                     {
-                        relativeDate = "Starts " + moment(e.start).fromNow();
+                        e.relativeDate = "Starts " + moment(e.start).fromNow();
                     }
                 }
 
                 if (this.config.truncateTitle > 0 && e.name.length > this.config.truncateTitle)
                 {
                     e.name = e.name.substring(0, this.config.truncateTitle) + "…"
-                }
+                } 
                 
-                
-                if (this.config.theme == "leekduck")
-                {
-                    html += `<div class="event-container leekduck" style="background-color: var(--pgo-${e.eventType})">
-                                <div class="heading">
-                                    ${e.heading}
-                                    <img src="${e.image}">
-                                </div>
-                                <div class="inner">
-                                    <p class="title">${e.name}</p>
-                                    <p class="date">${relativeDate}</p>
-                                </div>
-                            </div>`;
-                }
-                else //default
-                {
-                    html += `<div class="event-container default">
-                                <p class="title"><i class="${this.config.eventIcon}" style="color: var(--pgo-${e.eventType})"></i> ${e.name}</p>
-                                <p class="date light">${relativeDate}</p>
-                            </div>`;
-                }
+                events.push(e);
 
                 added++;
             }
@@ -133,16 +113,30 @@ Module.register("MMM-PokemonGOEvents", {
                 this.sendSocketNotification("PGO_GET_DATA", true);
             }
 
-            if (html == "")
-            {
-                html = '<span style="color: var(--color-text-bright);">No events.</span>'
-            }
-
-            wrapper.innerHTML = html;
+            return events;
         }
         
-        return wrapper;
+        return null;
     },
+
+    getTemplate: function () {
+		switch (this.config.theme) {
+			case "default":
+				return "themes/default.njk";
+			case "leekduck":
+				return "themes/leekduck.njk";
+			default:
+				return "themes/default.njk";
+		}
+	},
+
+	getTemplateData: function () {
+
+		return {
+			config: this.config,
+			events: this.getEvents()
+		};
+	},
 
     formatExactTime: function(time) {
         var timeSec = Math.floor(time / 1000);
