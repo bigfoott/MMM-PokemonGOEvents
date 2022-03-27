@@ -34,12 +34,10 @@ Module.register("MMM-PokemonGOEvents", {
         
         if (this.eventData != null)
         {
-            var html = '';
-            var added = 0;
             var doUpdateData = false;
             var events = [];
             
-            for (var i = 0; i < this.eventData.length && added < this.config.maxEvents; i++)
+            for (var i = 0; i < this.eventData.length && events.length < this.config.maxEvents; i++)
             {
                 var e = this.eventData[i];
 
@@ -101,11 +99,9 @@ Module.register("MMM-PokemonGOEvents", {
                 if (this.config.truncateTitle > 0 && e.name.length > this.config.truncateTitle)
                 {
                     e.name = e.name.substring(0, this.config.truncateTitle) + "…"
-                } 
+                }
                 
                 events.push(e);
-
-                added++;
             }
 
             if (doUpdateData)

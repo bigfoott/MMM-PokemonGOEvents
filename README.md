@@ -1,8 +1,8 @@
 ![Preview](https://github.com/bigfoott/MMM-PokemonGOEvents/blob/master/docs/preview.png?raw=true)
 
-# MMM-PokemonGOEvents
+![License | MIT](https://badgen.net/badge/license/MIT/purple) ![Platform | MagicMirror²](https://badgen.net/badge/platform/MagicMirror%C2%B2/purple)
 
-MMM-PokemonGOEvents is a module for [MagicMirror](https://magicmirror.builders/) that displays Pokemon GO events.
+**MMM-PokemonGOEvents** is a module for [MagicMirror²](https://magicmirror.builders/) ([Repo](https://github.com/MichMich/MagicMirror)) that displays Pokemon GO events.
 
 All event data is scraped from the [/events](https://www.leekduck.com/events/) page on [LeekDuck.com](https://www.leekduck.com/).
 
