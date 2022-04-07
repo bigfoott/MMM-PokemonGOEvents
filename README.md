@@ -44,7 +44,7 @@ modules: [
 | **`eventWhitelist`**             | `string[]` | `[]`                 | Whitelist certain event types. Only types listed in this array will be shown.
 | **`eventBlacklist`**             | `string[]` | `[]`                 | Blacklist certain event types. All types not listed in this array will be shown.<br/>**NOTE**: This option is ignored if the a whitelist is set.
 | **`specificEventBlacklist`**     | `string[]` | `[]`                 | Blacklist specific events. Events are specified by the ID on the Leek Duck website.<br/>**EX:** To blacklist the Season of Alola event, add `"season-of-alola"` from the event's url `"https://www.leekduck.com/events/season-of-alola/"`.
-| **`eventIcon`**                  | `string`   | `fa-solid fa-circle` | The icon to show next to event titles using the `default` theme. Value should be the relevant classes of a [Font Awesome](https://fontawesome.com/) icon.
+| **`eventIcon`**                  | `string`   | `fa-solid fa-ticket` | The icon to show next to event titles using the `default` theme. Value should be the relevant classes of a [Font Awesome](https://fontawesome.com/) icon.
 
 ## Event Types
 
