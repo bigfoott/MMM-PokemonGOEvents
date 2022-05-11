@@ -6,6 +6,7 @@
   "author": "bigfoott",
   "license": "MIT",
   "dependencies": {
-    "request": "latest"
+    "jsdom": "latest",
+    "moment": "latest"
   }
 }

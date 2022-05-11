@@ -4,7 +4,9 @@
 
 **MMM-PokemonGOEvents** is a module for [MagicMirror²](https://magicmirror.builders/) ([Repo](https://github.com/MichMich/MagicMirror)) that displays Pokemon GO events.
 
-All event data is gathered from [ScrapedDuck](https://github.com/bigfoott/ScrapedDuck), which scrapes [LeekDuck.com](https://www.leekduck.com/) at a set interval.
+All event data is scraped from the [/events](https://www.leekduck.com/events/) page on [LeekDuck.com](https://www.leekduck.com/).
+
+[LeekDuck.com](https://www.leekduck.com/) is accessed once every 15 minutes (X:00, X:15, X:30, and X:45), *or* if an event's starting/ending time reaches a negative value.
 
 ## Usage
 
