@@ -29,19 +29,19 @@ module.exports = NodeHelper.create({
                     events.forEach (e =>
                     {
                         var now = new Date();
-                        var start = new Date(e.start);
-                        var end = new Date(e.end);
+                        e.start = Date.parse(e.start);
+                        e.end = Date.parse(e.end);
 
                         if (category == "current")
                         {
-                            if (start <= now && end > now)
+                            if ((!e.start || e.start <= now) && e.end > now)
                             {
                                 result.array.push(e);
                             }
                         }
                         else //upcoming
                         {
-                            if (start > now)
+                            if (e.start > now)
                             {
                                 result.array.push(e);
                             }
