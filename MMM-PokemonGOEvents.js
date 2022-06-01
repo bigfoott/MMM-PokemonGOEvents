@@ -160,6 +160,16 @@ Module.register("MMM-PokemonGOEvents", {
             console.log("[" + this.name + "] Received data result notification (\"" + payload.category + "\").")
 
             this.eventData = payload.array;
+
+            if (this.config.category == "current")
+            {
+                this.eventData.sort((a, b) => a.end - b.end);
+            }
+            else //upcoming
+            {
+                this.eventData.sort((a, b) => a.start - b.start);
+            }
+
             this.updateDom();
         }
     }
