@@ -24,6 +24,8 @@
     --pgo-raid-weekend: #6f1e51;
     --pgo-potential-ultra-unlock: #2c3e50;
     --pgo-location-specific: #284b92;
+	--pgo-season: #38ada9;
+	--pgo-elite-raids: #a21416;
 }
 
 .event-container {
